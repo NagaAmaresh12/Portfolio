@@ -4,12 +4,7 @@ export const data = [
         component: "home",
         header: "Hi There !!",
         content: "I'm Naga Amaresh Kanne,",
-        footerCard: {
-            image: "#",
-            title: "I'm a Web Developer",
-            link: "#"
 
-        }
     },
 
     {
@@ -18,9 +13,10 @@ export const data = [
         title: "Project-1",
         projectName: "[LMS]",
         projectCard: {
-            image: "#",
-            title: "I'm a Web Developer",
-            link: "#"
+            image: "",
+            title: "Learning Management System",
+            link: "",
+            status: "On Going"
         }
     },
     {
@@ -29,9 +25,10 @@ export const data = [
         component: "project",
         projectName: "[E-Commerece]",
         projectCard: {
-            image: "#",
+            image: "",
             title: "E-commerece Platform",
-            link: "#"
+            link: "",
+            status: "comming soon"
         }
     },
     {
@@ -40,9 +37,10 @@ export const data = [
         projectName: "Mobile App",
         component: "project",
         projectCard: {
-            image: "#",
+            image: "",
             title: "Mobile Application",
-            link: "#"
+            link: "",
+            status: "comming soon"
         }
     },
     {
