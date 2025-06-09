@@ -60,7 +60,7 @@ const About = () => {
                             className="w-full bg-black text-white hover:bg-gray-800"
                         >
                             <a
-                                href="/resume/Resume.pdf"
+                                href="/resume/Resume-new.pdf"
                                 download="Naga_Amaresh_Kanne_Resume.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"

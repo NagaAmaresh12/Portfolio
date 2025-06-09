@@ -87,7 +87,7 @@ const Header = () => {
                     className="rounded-md border border-black font-semibold"
                 >
                     <a
-                        href="/resume/Resume.pdf"
+                        href="/resume/Resume-new.pdf"
                         download="Naga_Amaresh_Kanne_Resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
