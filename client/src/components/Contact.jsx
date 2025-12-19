@@ -18,11 +18,11 @@ import 'react-toastify/dist/ReactToastify.css'
 
 // Zod schema
 const formSchema = z.object({
-    name: z.string().min(1, { message: 'Name is required' }),
-    email: z.string().email({ message: 'Valid email is required' }),
-    company: z.string().min(1, { message: 'Company is required' }),
-    subject: z.string().min(1, { message: 'Subject is required' }),
-    message: z.string().min(1, { message: 'Message is required' }),
+    name: z.string().min(1, 'Name is required'),
+    email: z.string().email('Valid email is required'),
+    company: z.string().min(1, 'Company is required'),
+    subject: z.string().min(1, 'Subject is required'),
+    message: z.string().min(1, 'Message is required'),
 })
 
 const Contact = () => {
@@ -37,24 +37,34 @@ const Contact = () => {
         },
     })
 
+    const { isSubmitting } = form.formState
+
     const onSubmit = async (data) => {
         try {
             await axiosInstance.post('/mail/send', data)
-            toast.success("Thanks for reaching out — I’ll get back to you shortly.", { position: "top-center" })
+
+            toast.success(
+                "Thanks for reaching out — I’ll get back to you shortly.",
+                { position: 'top-center' }
+            )
+
             form.reset()
         } catch (error) {
-            console.error("error in sending email", error)
-            toast.error("Failed to send message!-Please Try Again", { position: "top-center" })
+            console.error('Error in sending email', error)
+            toast.error('Failed to send message. Please try again.', {
+                position: 'top-center',
+            })
         }
     }
 
     return (
-        <div style={{ padding: 20 }} className="h-full w-full p-6 flex items-center justify-center gap-10 flex-col">
+        <div className="h-full w-full p-6 flex items-center justify-center flex-col gap-10">
             <h4 className="text-4xl font-bold text-center">Contact Me</h4>
+
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="grid grid-cols-1 text-white gap-4 w-full lg:w-2/3"
+                    className="grid grid-cols-1 gap-4 w-full lg:w-2/3"
                 >
                     {/* Name */}
                     <FormField
@@ -69,7 +79,11 @@ const Contact = () => {
                             </FormItem>
                         )}
                     />
-                    {form.formState.errors.name && <p className='text-red-600'>{form.formState.errors.name.message}</p>}
+                    {form.formState.errors.name && (
+                        <p className="text-red-600 text-sm">
+                            {form.formState.errors.name.message}
+                        </p>
+                    )}
 
                     {/* Email */}
                     <FormField
@@ -84,7 +98,11 @@ const Contact = () => {
                             </FormItem>
                         )}
                     />
-                    {form.formState.errors.email && <p className='text-red-600'>{form.formState.errors.email.message}</p>}
+                    {form.formState.errors.email && (
+                        <p className="text-red-600 text-sm">
+                            {form.formState.errors.email.message}
+                        </p>
+                    )}
 
                     {/* Company */}
                     <FormField
@@ -99,7 +117,11 @@ const Contact = () => {
                             </FormItem>
                         )}
                     />
-                    {form.formState.errors.company && <p className='text-red-600'>{form.formState.errors.company.message}</p>}
+                    {form.formState.errors.company && (
+                        <p className="text-red-600 text-sm">
+                            {form.formState.errors.company.message}
+                        </p>
+                    )}
 
                     {/* Subject */}
                     <FormField
@@ -114,7 +136,11 @@ const Contact = () => {
                             </FormItem>
                         )}
                     />
-                    {form.formState.errors.subject && <p className='text-red-600'>{form.formState.errors.subject.message}</p>}
+                    {form.formState.errors.subject && (
+                        <p className="text-red-600 text-sm">
+                            {form.formState.errors.subject.message}
+                        </p>
+                    )}
 
                     {/* Message */}
                     <FormField
@@ -129,9 +155,27 @@ const Contact = () => {
                             </FormItem>
                         )}
                     />
-                    {form.formState.errors.message && <p className='text-red-600'>{form.formState.errors.message.message}</p>}
+                    {form.formState.errors.message && (
+                        <p className="text-red-600 text-sm">
+                            {form.formState.errors.message.message}
+                        </p>
+                    )}
 
-                    <Button type="submit" className="mt-4">Submit</Button>
+                    {/* Submit Button */}
+                    <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="
+              mt-4
+              cursor-pointer
+              transition-transform duration-150
+              active:scale-95
+              disabled:opacity-60
+              disabled:cursor-not-allowed
+            "
+                    >
+                        {isSubmitting ? 'Submitting...' : 'Submit'}
+                    </Button>
                 </form>
             </Form>
         </div>

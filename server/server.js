@@ -6,10 +6,16 @@ import mailRoutes from './routes/mailRoutes.js';
 dotenv.config();
 
 const app = express();
-
+let origin;
+if (process.env.NODE_ENV == "production") {
+    origin = process.env.CLIENT_ORIGIN
+}
+else if (process.env.NODE_ENV == "development") {
+    origin = process.env.CLIENT_ORIGIN || "http://localhost:5173"
+}
 // Middleware
 app.use(cors({
-    origin: process.env.CLIENT,
+    origin,
     methods: ['POST'],
     credentials: true,
     allowedHeaders: ['Content-Type']
