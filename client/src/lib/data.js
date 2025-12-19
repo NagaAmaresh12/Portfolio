@@ -6,9 +6,20 @@ export const data = [
         content: "I'm Naga Amaresh Kanne,",
 
     },
-
     {
         id: 1,
+        component: "project",
+        title: "Project-1",
+        projectName: "[Mucchatlu]",
+        projectCard: {
+            image: "",
+            title: "A ChatApp",
+            link: "",
+            status: "On Going"
+        }
+    },
+    {
+        id: 2,
         component: "project",
         title: "Project-1",
         projectName: "[LMS]",
@@ -19,18 +30,7 @@ export const data = [
             status: "On Going"
         }
     },
-    {
-        id: 2,
-        title: "Project-2",
-        component: "project",
-        projectName: "[E-Commerece]",
-        projectCard: {
-            image: "",
-            title: "E-commerece Platform",
-            link: "",
-            status: "comming soon"
-        }
-    },
+
     {
         id: 3,
         title: "Project-3",
