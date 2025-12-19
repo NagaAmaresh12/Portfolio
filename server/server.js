@@ -23,6 +23,9 @@ app.use(cors({
 app.use(express.json());
 
 // Routes
+app.get('/api/home', (req, res) => {
+    res.json({ message: "Welcome to Home" })
+})
 app.use('/api/mail', mailRoutes);
 
 const PORT = process.env.PORT || 5000;
